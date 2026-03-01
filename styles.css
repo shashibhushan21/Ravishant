@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary: #db7909;
+    --primary-hover: #933e08;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    --radius: 16px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, var(--primary), #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+}
+
+textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 16px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-size: 1rem;
+    resize: vertical;
+    transition: var(--transition);
+    outline: none;
+}
+
+textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-generate {
+    background-color: var(--primary);
+    color: white;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.btn-generate:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: #f1f5f9;
+    color: var(--text);
+    flex: 1;
+    min-width: 140px;
+}
+
+.btn-secondary:hover {
+    background-color: #e2e8f0;
+    transform: translateY(-2px);
+}
+
+.preview-section {
+    margin-top: 32px;
+    padding: 24px;
+    border-radius: 12px;
+    background: #fdfdfd;
+    border: 2px dashed var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+#qrcode {
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.placeholder-text {
+    color: var(--text-muted);
+}
+
+/* Result Card Styles */
+.result-card {
+    background: white;
+    width: 100%;
+    max-width: 450px;
+    padding: 32px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    text-align: left;
+    animation: slideUp 0.5s ease-out;
+}
+
+.result-header {
+    text-align: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.result-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    padding: 12px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.result-row:last-child {
+    border-bottom: none;
+}
+
+.label {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.value {
+    font-weight: 500;
+    color: var(--text);
+    word-break: break-word;
+}
+
+.error-msg {
+    color: #ef4444;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Simulated Popup CSS */
+.simulated-popup {
+    background: white;
+    width: 100%;
+    max-width: 320px;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    overflow: hidden;
+    margin: 0 auto;
+    font-size: 14px;
+    border: 1px solid #e0e0e0;
+}
+
+.popup-header {
+    padding: 16px 20px;
+    color: #455a64;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.popup-body {
+    padding: 0 20px 20px 20px;
+    color: #1e293b;
+    line-height: 1.6;
+    word-break: break-all;
+    font-weight: 500;
+}
+
+.popup-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+    padding: 12px 20px;
+}
+
+.popup-footer span {
+    color: #00897b;
+    font-weight: 600;
+    cursor: default;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 24px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    .btn-secondary {
+        width: 100%;
+    }
+
+    .result-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+    }
+}
