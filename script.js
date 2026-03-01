@@ -21,15 +21,13 @@ document.getElementById('generateBtn').addEventListener('click', function () {
     placeholder.style.display = 'none';
     downloadGroup.style.display = 'flex';
 
-    // 3. Process the text to match the requested "Popup" format (join lines with pipes)
-    const lines = text.split('\n').filter(l => l.trim() !== '');
-    const formattedText = lines.map(line => line.trim()).join(' | ');
+    // 3. Process the text to match the requested format (join lines with pipes)
+    // We keep the exact text as entered in each line
+    const lines = text.split('\n').map(l => l.trim()).filter(l => l !== '');
+    const formattedText = lines.join(' | ');
 
-    // 4. Update Preview to look like the "Recognition Result" popup
-    renderSimulatedPopup(formattedText);
-
-    // 5. Generate QR Code with formatted text
-    new QRCode(document.getElementById('qrcode'), {
+    // 4. Generate QR Code with ONLY the formatted raw text
+    new QRCode(qrcodeContainer, {
         text: formattedText,
         width: 256,
         height: 256,
@@ -38,26 +36,6 @@ document.getElementById('generateBtn').addEventListener('click', function () {
         correctLevel: QRCode.CorrectLevel.H
     });
 });
-
-function renderSimulatedPopup(text) {
-    const previewArea = document.getElementById('previewArea');
-    previewArea.style.padding = '0';
-    previewArea.style.border = 'none';
-    previewArea.style.background = 'transparent';
-    previewArea.style.minHeight = 'auto';
-
-    previewArea.innerHTML = `
-        <div class="simulated-popup">
-            <div class="popup-header">Recognition Result</div>
-            <div class="popup-body">${text}</div>
-            <div class="popup-footer">
-                <span>Cancel</span>
-                <span>Copy</span>
-            </div>
-        </div>
-        <div id="qrcode" style="margin-top: 24px;"></div>
-    `;
-}
 
 // Download PNG
 document.getElementById('downloadPng').addEventListener('click', function () {
